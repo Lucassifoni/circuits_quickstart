@@ -47,7 +47,7 @@ defmodule CircuitsQuickstart.MixProject do
       {:shoehorn, "~> 0.9.0"},
       {:ring_logger, "~> 0.9"},
       {:toolshed, "~> 0.3"},
-      {:dts_buddy, path: "./../dts-buddy"},
+      {:dts_buddy, git: "https://github.com/lucassifoni/dts-buddy.git"},
 
       # Circuits projects
       {:circuits_uart, "~> 1.3"},

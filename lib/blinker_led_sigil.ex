@@ -3,19 +3,21 @@ defmodule BlinkerLedSigil do
   What the DtsBuddy API could look like with the new multi-letter sigil support.
   What I liked is the (near) absence of syntax after you `import DtsBuddy`, but
   the multi-letter sigils do not support interpolation in strings, and interpolating
-  the DTS string ourselves will either add macros or calling conventions. I think that deters
-  from the initial "simplicity" of the sigils and makes things less explicit.
+  the DTS string ourselves will either add macros or calling conventions.
+  To me it was a nice to have, but not essential.
   """
 
-  import DtsBuddy
+  import DtsBuddy.Sigil
 
   def setup() do
+    DtsBuddy.enable_overlays()
+
     ~DTS"""
       /dts-v1/;
       /plugin/;
 
       &{/} {
-        leds {
+        gpios_leds {
           compatible = "gpio-leds";
 
           test_led@36 {
@@ -28,6 +30,6 @@ defmodule BlinkerLedSigil do
           };
         };
       };
-    """led |> load()
+    """led |> DtsBuddy.load()
   end
 end

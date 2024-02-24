@@ -6,12 +6,14 @@ defmodule BlinkerLedFn do
   which would allow to use standard config to pass values.
   """
   def setup(options \\ [pattern: "<1 500 1 0 0 500 0 0>"]) do
+    DtsBuddy.enable_overlays()
+
     template = """
       /dts-v1/;
       /plugin/;
 
       &{/} {
-        leds {
+        gpios_leds {
           compatible = "gpio-leds";
 
           test_led@36 {
@@ -26,7 +28,7 @@ defmodule BlinkerLedFn do
       };
     """
 
-    DtsBuddy.compile_dts(template, options, "test_led")
+    DtsBuddy.compile_eex(template, options, "test_led")
       |> DtsBuddy.load()
   end
 end
