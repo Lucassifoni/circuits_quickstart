@@ -2,7 +2,7 @@ defmodule CircuitsQuickstart.MixProject do
   use Mix.Project
 
   @app :circuits_quickstart
-  @version "0.8.1"
+  @version "0.10.1"
   @all_targets [
     :rpi,
     :rpi0,
@@ -24,8 +24,8 @@ defmodule CircuitsQuickstart.MixProject do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.12",
-      archives: [nerves_bootstrap: "~> 1.9"],
+      elixir: "~> 1.16",
+      archives: [nerves_bootstrap: "~> 1.10"],
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       releases: [{@app, release()}],
@@ -61,22 +61,23 @@ defmodule CircuitsQuickstart.MixProject do
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.13.0", targets: @all_targets},
       {:nerves_pack, "~> 0.7.0", targets: @all_targets},
+      {:vintage_net_wifi, "~> 0.12.5", targets: @all_targets},
 
       # Dependencies for specific targets
-      {:nerves_system_rpi, "~> 1.24", runtime: false, targets: :rpi},
-      {:nerves_system_rpi0, "~> 1.24", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi0_2, "~> 1.24", runtime: false, targets: :rpi0_2},
-      {:nerves_system_rpi2, "~> 1.24", runtime: false, targets: :rpi2},
-      {:nerves_system_rpi3, "~> 1.24", runtime: false, targets: :rpi3},
-      {:nerves_system_rpi3a, "~> 1.24", runtime: false, targets: :rpi3a},
-      {:nerves_system_rpi4, "~> 1.24", runtime: false, targets: :rpi4},
-      {:nerves_system_rpi5, "~> 0.0.1", runtime: false, targets: :rpi5},
-      {:nerves_system_bbb, "~> 2.18", runtime: false, targets: :bbb},
-      {:nerves_system_osd32mp1, "~> 0.14", runtime: false, targets: :osd32mp1},
-      {:nerves_system_x86_64, "~> 1.24", runtime: false, targets: :x86_64},
-      {:nerves_system_npi_imx6ull, "~> 0.11", runtime: false, targets: :npi_imx6ull},
-      {:nerves_system_grisp2, "~> 0.7", runtime: false, targets: :grisp2},
-      {:nerves_system_mangopi_mq_pro, "~> 0.5", runtime: false, targets: :mangopi_mq_pro}
+      {:nerves_system_rpi, "~> 1.27", runtime: false, targets: :rpi},
+      {:nerves_system_rpi0, "~> 1.27", runtime: false, targets: :rpi0},
+      {:nerves_system_rpi0_2, "~> 1.27", runtime: false, targets: :rpi0_2},
+      {:nerves_system_rpi2, "~> 1.27", runtime: false, targets: :rpi2},
+      {:nerves_system_rpi3, "~> 1.27", runtime: false, targets: :rpi3},
+      {:nerves_system_rpi3a, "~> 1.27", runtime: false, targets: :rpi3a},
+      {:nerves_system_rpi4, "~> 1.27", runtime: false, targets: :rpi4},
+      {:nerves_system_rpi5, "~> 0.2", runtime: false, targets: :rpi5},
+      {:nerves_system_bbb, "~> 2.22", runtime: false, targets: :bbb},
+      {:nerves_system_osd32mp1, "~> 0.18", runtime: false, targets: :osd32mp1},
+      {:nerves_system_x86_64, "~> 1.27", runtime: false, targets: :x86_64},
+      {:nerves_system_npi_imx6ull, "~> 0.15", runtime: false, targets: :npi_imx6ull},
+      {:nerves_system_grisp2, "~> 0.11", runtime: false, targets: :grisp2},
+      {:nerves_system_mangopi_mq_pro, "~> 0.9", runtime: false, targets: :mangopi_mq_pro}
     ]
   end
 
